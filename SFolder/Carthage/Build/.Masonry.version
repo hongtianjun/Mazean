@@ -1,0 +1,21 @@
+{
+  "iOS" : [
+    {
+      "hash" : "fc69760f0f329338809d83d439a976c121fadc5639db4c734e765cafd463f6dc",
+      "name" : "Masonry"
+    }
+  ],
+  "commitish" : "v1.0.2",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+    {
+      "hash" : "1aa1907516623d7b3864a8079ba6fdcbf4a6766f1c4718e70ad3e65b2af86ea9",
+      "name" : "Masonry"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+/* 
+  Info.strings
+  SFolder
+
+  Created by hong7 on 2017/5/14.
+  Copyright © 2017年 hong7. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "迷宫豆子";
+"CFBundleGetInfoString" = "迷宫豆子 1.0.0, Copyright 2017";
+"CFBundleName" = "迷宫豆子";
