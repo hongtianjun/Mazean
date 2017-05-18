@@ -20,6 +20,10 @@
 		30A802AC1EC07D4300044679 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30A802AB1EC07D4300044679 /* Assets.xcassets */; };
 		30A802BA1EC07D4300044679 /* SFolderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A802B91EC07D4300044679 /* SFolderTests.m */; };
 		30A802C51EC07D4300044679 /* SFolderUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A802C41EC07D4300044679 /* SFolderUITests.m */; };
+		30AA37861ECC892700491D56 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30AA37851ECC892700491D56 /* MASPreferences.framework */; };
+		30AA378A1ECC8A1800491D56 /* SFGeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AA37881ECC8A1800491D56 /* SFGeneralPreferencesViewController.m */; };
+		30AA378B1ECC8A1800491D56 /* SFGeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30AA37891ECC8A1800491D56 /* SFGeneralPreferencesViewController.xib */; };
+		30AA379C1ECD6F3100491D56 /* SFMenuAppView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AA379B1ECD6F3100491D56 /* SFMenuAppView.m */; };
 		30AA77AB1EC35AC4006A722E /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 30AA77AA1EC35AC4006A722E /* Cartfile */; };
 		30AA77AE1EC35BFD006A722E /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30AA77AD1EC35BFD006A722E /* Masonry.framework */; };
 		30EC56971EC807E6007F2F6E /* SFMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30EC56961EC807E6007F2F6E /* SFMenuViewController.m */; };
@@ -85,6 +89,12 @@
 		30A802C01EC07D4300044679 /* SFolderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFolderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A802C41EC07D4300044679 /* SFolderUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFolderUITests.m; sourceTree = "<group>"; };
 		30A802C61EC07D4300044679 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30AA37851ECC892700491D56 /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MASPreferences.framework; path = Carthage/Build/Mac/MASPreferences.framework; sourceTree = "<group>"; };
+		30AA37871ECC8A1800491D56 /* SFGeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFGeneralPreferencesViewController.h; sourceTree = "<group>"; };
+		30AA37881ECC8A1800491D56 /* SFGeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFGeneralPreferencesViewController.m; sourceTree = "<group>"; };
+		30AA37891ECC8A1800491D56 /* SFGeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SFGeneralPreferencesViewController.xib; sourceTree = "<group>"; };
+		30AA379A1ECD6F3100491D56 /* SFMenuAppView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMenuAppView.h; sourceTree = "<group>"; };
+		30AA379B1ECD6F3100491D56 /* SFMenuAppView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMenuAppView.m; sourceTree = "<group>"; };
 		30AA77AA1EC35AC4006A722E /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		30AA77AD1EC35BFD006A722E /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Masonry.framework; path = Carthage/Build/Mac/Masonry.framework; sourceTree = "<group>"; };
 		30EC56951EC807E6007F2F6E /* SFMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMenuViewController.h; sourceTree = "<group>"; };
@@ -98,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30AA37861ECC892700491D56 /* MASPreferences.framework in Frameworks */,
 				30AA77AE1EC35BFD006A722E /* Masonry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +225,7 @@
 		30AA77AC1EC35BFC006A722E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				30AA37851ECC892700491D56 /* MASPreferences.framework */,
 				30AA77AD1EC35BFD006A722E /* Masonry.framework */,
 			);
 			name = Frameworks;
@@ -226,6 +238,11 @@
 				30EC56961EC807E6007F2F6E /* SFMenuViewController.m */,
 				30EC56981EC808B5007F2F6E /* SFDeviceView.h */,
 				30EC56991EC808B5007F2F6E /* SFDeviceView.m */,
+				30AA379A1ECD6F3100491D56 /* SFMenuAppView.h */,
+				30AA379B1ECD6F3100491D56 /* SFMenuAppView.m */,
+				30AA37871ECC8A1800491D56 /* SFGeneralPreferencesViewController.h */,
+				30AA37881ECC8A1800491D56 /* SFGeneralPreferencesViewController.m */,
+				30AA37891ECC8A1800491D56 /* SFGeneralPreferencesViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -349,6 +366,7 @@
 			files = (
 				3061ECBC1EC7F95B006611E7 /* InfoPlist.strings in Resources */,
 				30AA77AB1EC35AC4006A722E /* Cartfile in Resources */,
+				30AA378B1ECC8A1800491D56 /* SFGeneralPreferencesViewController.xib in Resources */,
 				30A802AC1EC07D4300044679 /* Assets.xcassets in Resources */,
 				303BFAAE1EC5908100BD115E /* MainMenu.xib in Resources */,
 			);
@@ -378,6 +396,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/Mac/Masonry.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/MASPreferences.framework",
 			);
 			outputPaths = (
 			);
@@ -392,7 +411,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30AA379C1ECD6F3100491D56 /* SFMenuAppView.m in Sources */,
 				308175D21EC171380055BA4A /* SFData.m in Sources */,
+				30AA378A1ECC8A1800491D56 /* SFGeneralPreferencesViewController.m in Sources */,
 				30A802AA1EC07D4300044679 /* ViewController.m in Sources */,
 				30A802A71EC07D4300044679 /* main.m in Sources */,
 				308175CF1EC1712B0055BA4A /* SFBundle.m in Sources */,

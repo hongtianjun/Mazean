@@ -1,45 +1,50 @@
 //
-//  SFDeviceView.m
+//  SFMenuAppView.m
 //  SFolder
 //
-//  Created by hong7 on 2017/5/14.
+//  Created by hong7 on 2017/5/18.
 //  Copyright © 2017年 hong7. All rights reserved.
 //
 
-#import "SFDeviceView.h"
-
+#import "SFMenuAppView.h"
 #import <Masonry/Masonry.h>
 
-@interface SFDeviceView ()
-
-
-@end
-
-@implementation SFDeviceView
+@implementation SFMenuAppView
 
 -(instancetype)initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
-
+        
         [self addSubview:self.nameLabel];
         [self addSubview:self.versionLabel];
-        [self addSubview:self.moreView];
+        [self addSubview:self.logoImageView];
         
         [self updateConstraints];
     }
     return self;
 }
 
+- (void)mouseDown:(NSEvent *)theEvent
+{
+    [NSApp sendAction:self.enclosingMenuItem.action to:self.enclosingMenuItem.target from:self.enclosingMenuItem];
+    [self.enclosingMenuItem.menu cancelTracking];
+}
+
+-(void)drawRect:(NSRect)dirtyRect {
+    
+    
+}
+
 -(void)updateConstraints {
     
-    [self.moreView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.logoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
-        make.right.equalTo(self).offset(-5.0f);
-        make.height.width.equalTo(@30.0f);
+        make.left.equalTo(self).offset(20.0f);
+        make.height.width.equalTo(@35.0f);
     }];
     
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(5.0f);
-        make.left.equalTo(self).offset(20.0f);
+        make.left.equalTo(self.logoImageView.mas_right).offset(5.0f);
         make.right.equalTo(self).offset(-20.0f);
     }];
     
@@ -47,7 +52,6 @@
         make.left.equalTo(self.nameLabel);
         make.right.lessThanOrEqualTo(self.nameLabel);
         make.top.equalTo(self.nameLabel.mas_bottom).offset(5.0f);
-        make.height.equalTo(@10.0f);
     }];
     
     [super updateConstraints];
@@ -77,11 +81,13 @@
     return _versionLabel;
 }
 
--(NSImageView *)moreView {
-    if (!_moreView) {
-        _moreView = [NSImageView imageViewWithImage:[NSImage imageNamed:NSImageNameTouchBarPlayTemplate]];
-        //_moreButton.bordered = NO;
+-(NSImageView *)logoImageView {
+    if (!_logoImageView) {
+        _logoImageView = [NSImageView imageViewWithImage:[NSImage imageNamed:NSImageNameTouchBarPlayTemplate]];
+        _logoImageView.imageScaling = NSImageScaleAxesIndependently;
+        _logoImageView.refusesFirstResponder = YES;
     }
-    return _moreView;
+    return _logoImageView;
 }
+
 @end

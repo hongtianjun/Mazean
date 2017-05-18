@@ -12,4 +12,5 @@
 
 @property (nonatomic,strong) NSTextField * nameLabel;
 @property (nonatomic,strong) NSTextField * versionLabel;
+@property (nonatomic,strong) NSImageView * moreView;
 @end

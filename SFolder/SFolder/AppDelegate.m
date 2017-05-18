@@ -12,11 +12,16 @@
 #import "SFApplication.h"
 
 #import "SFDeviceView.h"
+#import "SFMenuAppView.h"
+
+#import <MASPreferences/MASPreferences.h>
+#import "SFGeneralPreferencesViewController.h"
 
 @interface AppDelegate ()
 
 @property (nonatomic,strong) NSStatusItem * statusItem;
 @property (nonatomic,strong) NSMenu * statusMenu;
+@property (nonatomic,strong) MASPreferencesWindowController * preferencesController;
 @end
 
 @implementation AppDelegate
@@ -26,7 +31,7 @@
     NSData * bookmarkData = [[NSUserDefaults standardUserDefaults] objectForKey:@"bookmark"];
     NSError * error = nil;
     NSURL * url = [NSURL URLByResolvingBookmarkData:bookmarkData options:NSURLBookmarkResolutionWithSecurityScope relativeToURL:nil bookmarkDataIsStale:nil error:&error];
-    if (error == nil && url) {
+    if (error == nil && url != nil) {
         if ([url startAccessingSecurityScopedResource]) {
             
             handler(url);
@@ -75,9 +80,10 @@
     
     [self beginAccessDevicesURLWithCompletionHandler:^(NSURL * url) {
         [[SFDeviceManager defaultManager] updateDevicesByURL:url];
+        [self createStatusBarMenu];
     }];
     
-    [self createStatusBarMenu];
+    
 }
 
 -(void)createStatusBarMenu {
@@ -95,7 +101,7 @@
         NSString * title = [NSString stringWithFormat:@"%@ %@",device.name,device.version];
         NSMenuItem * item = [_statusMenu addItemWithTitle:title action:@selector(hi:) keyEquivalent:@""];
         
-        SFDeviceView * view = [[SFDeviceView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 50.0f)];
+        SFDeviceView * view = [[SFDeviceView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 40.0f)];
         [view.nameLabel setStringValue:device.name];
         [view.versionLabel setStringValue:device.version];
         item.view = view;
@@ -106,28 +112,56 @@
             
             NSMenuItem * mm = [subMenu addItemWithTitle:bundle.identifier action:@selector(hi:) keyEquivalent:@""];
             
+            SFMenuAppView * appView = [[SFMenuAppView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 50.0f)];
+            [appView.nameLabel setStringValue:bundle.identifier];
+            [appView.versionLabel setStringValue:[NSString stringWithFormat:@"%@ (%@)",bundle.shortVersion,bundle.version]];
+            [appView setItem:mm];
+            mm.view = appView;
+            
             NSImage * iconImage = nil;
             if (bundle.iconFiles.count > 0) {
-                NSURL * path = [bundle.applicationURL URLByAppendingPathComponent:bundle.iconFiles[0]];
-                path = [path URLByAppendingPathExtension:@"png"];
+                NSURL * path = [bundle.applicationURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@%@.png",bundle.iconFiles[0],@"@3x"]];
                 iconImage = [[NSImage alloc] initWithContentsOfURL:path];
             }
-            if (iconImage == nil) iconImage = [NSImage imageNamed:@"DefaultIcon"];
+            if (iconImage == nil) iconImage = [NSImage imageNamed:NSImageNameApplicationIcon];
+            [appView.logoImageView setImage:iconImage];
             
-            [mm setImage:iconImage];
+            //[mm setImage:iconImage];
             [mm setTag:p * 1000 + count++];
             
             [subMenu addItem:[NSMenuItem separatorItem]];
             
         }
         [_statusMenu setSubmenu:subMenu forItem:item];
-        [_statusMenu addItem:[NSMenuItem separatorItem]];
+        //[_statusMenu addItem:[NSMenuItem separatorItem]];
         p++;
     }
     
+    
+    [_statusMenu addItem:[NSMenuItem separatorItem]];
+    //设置
+//    [_statusMenu addItemWithTitle:@"偏好设置" action:@selector(setup:) keyEquivalent:@","];
+    //反馈
+    [_statusMenu addItemWithTitle:@"联系我们" action:@selector(contact:) keyEquivalent:@""];
     //增加退出按钮
     [_statusMenu addItem:[NSMenuItem separatorItem]];
-    [_statusMenu addItemWithTitle:@"退出" action:@selector(quit:) keyEquivalent:@""];
+    [_statusMenu addItemWithTitle:@"退出" action:@selector(quit:) keyEquivalent:@"q"];
+}
+
+-(void)setup:(NSMenuItem *)item {
+
+    if (self.preferencesController == nil) {
+        SFGeneralPreferencesViewController * viewController = [[SFGeneralPreferencesViewController alloc] initWithNibName:@"SFGeneralPreferencesViewController" bundle:nil];;
+        MASPreferencesWindowController * preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:@[viewController] title:nil];
+        
+        self.preferencesController = preferencesWindowController;
+    }
+    [self.preferencesController showWindow:self];
+}
+
+-(void)contact:(NSMenuItem *)item {
+    
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"mailto:htj0414@163.com"]];
 }
 
 -(void)hi:(NSMenuItem *)item {

@@ -1,7 +1,7 @@
 {
   "iOS" : [
     {
-      "hash" : "fc69760f0f329338809d83d439a976c121fadc5639db4c734e765cafd463f6dc",
+      "hash" : "649f68bcda61f318770ee4219561fd52e16c55b7e38859f9d702b8076a8333f4",
       "name" : "Masonry"
     }
   ],
@@ -14,7 +14,7 @@
   ],
   "Mac" : [
     {
-      "hash" : "1aa1907516623d7b3864a8079ba6fdcbf4a6766f1c4718e70ad3e65b2af86ea9",
+      "hash" : "5810c6911a1edf9cbfdb6c4ebed9b25a9be798de8e02cc359aaa8a38ba0d4f7e",
       "name" : "Masonry"
     }
   ]

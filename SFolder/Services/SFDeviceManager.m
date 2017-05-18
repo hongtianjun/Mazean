@@ -174,7 +174,7 @@ NSString * const kDataPath = @"data/Containers/Data/Application";
         for (NSString * name in device) {
             NSString * value = [device objectForKey:name];
             SFDDevice * device = [self deviceByUUID:value];
-            
+            NSLog(@"%@",device.name);
             if (device) {
                 device.bundles = [self bundlesByDevice:device];
                 device.datas = [self datasByDevice:device];
@@ -184,6 +184,7 @@ NSString * const kDataPath = @"data/Containers/Data/Application";
     }
     //此处需要缓存这些信息吗??
     self.devices = array;
+    NSLog(@"%@",array);
 }
 
 
