@@ -11,7 +11,7 @@
 #import <Masonry/Masonry.h>
 
 @interface SFDeviceView ()
-
+    
 
 @end
 
